@@ -1,0 +1,24 @@
+Entero num1, num2
+
+inicio
+
+escriba "Ingrese dos numero enteros..."
+llamar nueva_linea
+escriba "Escribe primer numero: "
+lea num1
+llamar nueva_linea
+escriba "Escribe segundo numero: "
+lea num2
+llamar nueva_linea
+si num1 > num2 entonces
+	escriba "El primer numero es mayor ",num1
+	sino
+	si num1 = num2 entonces
+		escriba "Los dos numero son iguales..."
+		sino
+		si num1<num2 entonces
+		escriba "El segundo numero es mayor ",num2
+	fin si
+fin si 
+fin si
+fin

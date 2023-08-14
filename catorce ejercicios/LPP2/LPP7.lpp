@@ -1,0 +1,14 @@
+entero num1,calculo
+
+inicio
+
+escriba "Bienvenido al parqueadero los roses...."
+llamar nueva_linea
+escriba "Dijite las horas: "
+lea num1
+llamar nueva_linea
+calculo <- num1 * 1500
+
+escriba "El total a pagar es de: ",calculo," ", "El total de horas es: ",num1
+
+fin

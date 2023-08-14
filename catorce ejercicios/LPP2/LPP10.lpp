@@ -1,0 +1,27 @@
+entero num1, pago, sueldo
+
+inicio 
+
+escriba "Bienvenido"
+llamar nueva_linea
+escriba "Escribe tu sueldo, por favor: "
+lea num1
+si num1 <= 500000 entonces
+	pago <-  num1 *0.12
+	escriba "El descuento es de: ",pago
+		sino
+	si num1 <= 1000000 entonces
+		pago <- num1 * 0.15
+		escriba "El descuento es de: ",pago
+		sino
+		si num1 > 1000000 entonces
+		pago <-  num1 * 0.18
+		escriba "El descuento es de: ",pago
+		fin si 
+	fin si 
+fin si
+llamar nueva_linea
+sueldo<-num1 - pago
+escriba "Tu saldo final es de: ",sueldo
+
+fin

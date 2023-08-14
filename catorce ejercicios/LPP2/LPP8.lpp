@@ -1,0 +1,26 @@
+entero horas, pago
+cadena [25] tipo1
+
+inicio
+
+Escriba "Bienvenido"
+llamar nueva_linea
+escriba "Escribe el horario correspondiente: "
+lea tipo1
+llamar nueva_linea
+escriba "Escribe las horas trabajadas: "
+lea horas
+si tipo1 = "diurno" entonces
+	pago <- horas * 10
+	escriba "Tu pago es de: ",pago," dolares"
+	sino
+	si tipo1 = "nocturno" entonces
+		pago <- horas * 15 
+		escriba "Tu pago es de: ", pago," dolares"
+		sino
+		escriba "Error"
+		
+		fin si 
+		fin si
+		
+fin

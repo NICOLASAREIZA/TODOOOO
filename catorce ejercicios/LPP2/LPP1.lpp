@@ -1,0 +1,15 @@
+Entero edad 
+
+inicio
+
+escriba "Por favor, ingrese su edad... "
+lea edad
+llamar nueva_linea
+si edad > 17 entonces
+	escriba "Tienes ",edad,", eres MAYOR de edad"
+	sino
+	si edad < 18 entonces
+	escriba "Tienes ",edad,", eres MENOR de edad"
+	fin si 
+	fin si 
+fin

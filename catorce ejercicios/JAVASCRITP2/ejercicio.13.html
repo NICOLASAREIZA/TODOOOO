@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonificación</title>
+</head>
+<body>
+    <form id="formBonificacion">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required><br><br>
+
+        <label for="salario">Salario básico:</label>
+        <input type="number" id="salario" step="any" required><br><br>
+
+        <label for="genero">Género:</label>
+        <select id="genero" required>
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
+            <option value="3">Otro</option>
+        </select><br><br>
+
+        <label for="años">Tiempo de servicio:</label>
+        <input type="number" id="años" step="any" required><br><br>
+
+        <button type="button" onclick="calcularBonificacion()">Calcular Bonificación</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularBonificacion() {
+    const nombre = document.getElementById("nombre").value;
+    const genero = parseInt(document.getElementById("genero").value);
+    const salario = parseFloat(document.getElementById("salario").value);
+    const servicio = parseFloat(document.getElementById("años").value);
+
+    const resultadoDiv = document.getElementById("resultado");
+    let mensaje = "";
+
+    if (salario < 0 || servicio < 0) {
+        mensaje = "Error, datos no válidos";
+    } else {
+        if (genero === 2 && servicio > 5) {
+            const bonificacion = salario * 0.20;
+            mensaje = `Bonificación 20%: ${bonificacion}, Total ${salario + bonificacion}`;
+        } else if (genero === 2 && servicio <= 5) {
+            const bonificacion = salario * 0.15;
+            mensaje = `Bonificación 15%: ${bonificacion}, Total ${salario + bonificacion}`;
+        } else if (genero === 1 && servicio > 6) {
+            const bonificacion = salario * 0.20;
+            mensaje = `Bonificación 20%: ${bonificacion}, Total ${salario + bonificacion}`;
+        } else if (genero === 1 && servicio > 1 && servicio <= 6) {
+            const bonificacion = salario * 0.15;
+            mensaje = `Bonificación 15%: ${bonificacion}, Total ${salario + bonificacion}`;
+        } else if (genero === 3) {
+            const bonificacion = salario * 0.10;
+            mensaje = `Bonificación 10%: ${bonificacion}, Total ${salario + bonificacion}`;
+        }
+    }
+
+    resultadoDiv.innerText = mensaje;
+}
+
+    </script>
+
+
+
+<!-- Realizar un programa que capture los datos de un empleado:
+Nombre, Genero (1-masculino, 2-femenino), Salario básico, y tiempo de servicio.
+El sistema debe calcular el valor de la bonificación anual en base a los siguientes
+lineamientos de la empresa:
+Si es mujer y el tiempo de servicio es superior a 5 años, su bonificación será de un 20% del
+Salario básico
+Si es mujer y el tiempo de servicio es inferior o igual a 5 años, su bonificación será de un
+15% del Salario básico
+Si es hombre y el tiempo de servicio es superior a 6 años, su bonificación será de un 20% del
+Salario Básico.
+Si es hombre y el tiempo de servicio está entre 1 y 6 años su bonificación será de un 15%
+del Salario Básico. -->
+
+</body>
+</html>

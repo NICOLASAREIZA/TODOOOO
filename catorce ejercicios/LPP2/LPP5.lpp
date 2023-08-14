@@ -1,0 +1,28 @@
+entero num1,num2,num3
+
+inicio
+Escriba "Ingrese tres numero enteros..."
+llamar nueva_linea
+escriba "Ingrese primer numero: "
+lea num1
+llamar nueva_linea
+escriba "Ingrese segundo numero: "
+lea num2
+llamar nueva_linea
+escriba "Ingrese tercer numero: "
+lea num3
+llamar nueva_linea
+si (num1 < num2) y (num1 < num3) entonces
+	escriba "El primer numero es el menor ",num1
+	sino 
+	si (num2 < num1) y (num2 < num3) entonces
+		escriba "El segundo numero es el menor ",num2
+		sino
+		si (num3 < num1) y (num3 < num2) entonces
+		escriba "El tercer numero es el menor ",num3
+		
+		fin si
+		fin si
+		fin si
+	
+fin

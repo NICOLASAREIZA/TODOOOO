@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnóstico de Anemia</title>
+</head>
+<body>
+    <h1>Diagnóstico de Anemia</h1>
+    <form id="anemiaForm">
+        <label for="edad">Edad:</label>
+        <select id="edad" name="edad">
+            <option value="0-1">0 - 1 mes</option>
+            <option value="1-6">>1 y <= 6 meses</option>
+            <option value="6-12">6 y <= 12 meses</option>
+            <option value="1-5">1 y <= 5 años</option>
+            <option value="5-10">5 y <= 10 años</option>
+            <option value="10-15">10 y <= 15 años</option>
+            <option value="mujeres">Mujer</option>
+            <option value="hombres">Hombre</option>
+        </select><br><br>
+
+        <label for="hemoglobina">Nivel de Hemoglobina (g%):</label>
+        <input type="number" id="hemoglobina" name="hemoglobina" step="0.01" required><br>
+        <p id="errorMensaje" style="color: red;"></p><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <h2>Resultado del diagnóstico:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("anemiaForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+
+            const edadSeleccionada = document.getElementById("edad").value;
+            const hemoglobina = parseFloat(document.getElementById("hemoglobina").value);
+            let resultado = "";
+            let errorMensaje = "";
+
+            const rangos = {
+                "0-1": { min: 13, max: 26 },
+                "1-6": { min: 10, max: 18 },
+                "6-12": { min: 11, max: 15 },
+                "1-5": { min: 11.5, max: 15 },
+                "5-10": { min: 12.6, max: 15.5 },
+                "10-15": { min: 13, max: 15.5 },
+                "mujeres": { min: 12, max: 16 },
+                "hombres": { min: 14, max: 18 },
+            };
+
+            if (hemoglobina < 0) {
+                errorMensaje = "Error: dato no válido";
+            } else if (hemoglobina < rangos[edadSeleccionada].min) {
+                resultado = "Positivo";
+            } else if (hemoglobina >= rangos[edadSeleccionada].min && hemoglobina <= rangos[edadSeleccionada].max) {
+                resultado = "Negativo";
+            } else {
+                resultado = "Persona Anormal";
+            }
+
+            document.getElementById("errorMensaje").textContent = errorMensaje;
+            document.getElementById("resultado").textContent = `Resultado: ${resultado}`;
+        });
+    </script>
+</body>
+</html>

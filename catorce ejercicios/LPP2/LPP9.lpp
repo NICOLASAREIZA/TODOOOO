@@ -1,0 +1,15 @@
+entero horas, pago
+inicio
+
+escriba "Bienvenido"
+llamar nueva_linea
+escriba "Escriba las horas trabajadas: "
+lea horas
+si horas <= 40 entonces
+	pago <- horas * 20
+		sino
+		pago <- (40*20)+(horas-40)*25
+fin si 
+escriba "Tu sueldo semanal es de: ",pago
+
+fin

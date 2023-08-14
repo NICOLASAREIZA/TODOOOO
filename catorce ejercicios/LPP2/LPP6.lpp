@@ -1,0 +1,19 @@
+entero num1
+
+inicio
+
+Escriba "Dijite sus nota.."
+llamar nueva_linea
+escriba "Escribe tu calificacion: "
+lea num1
+llamar nueva_linea
+si num1 > 7 entonces
+	escriba "Tu has aprobado,tu calificacion es: ",num1
+	sino
+	si num1 < 7 entonces
+		escriba "Tu reprobaste,tu calificacion es: ",num1
+		
+		fin si
+		fin si
+
+fin

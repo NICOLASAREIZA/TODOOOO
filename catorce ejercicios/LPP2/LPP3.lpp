@@ -1,0 +1,27 @@
+entero num1, num2
+
+inicio
+
+escriba "Bienvenido"
+llamar nueva_linea
+escriba "A continuacion dijita dos numeros enteros..."
+llamar nueva_linea
+escriba "Escribe el primer numero entero: "
+lea num1
+llamar nueva_linea
+escriba "Escribe el segundo numero entero: "
+lea num2
+llamar nueva_linea
+si num1 > num2 entonces
+escriba "El numero mayor es: ",num1
+	sino
+	si num1 = num2 entonces
+	escriba "Son iguales los dos numero...."
+		sino
+		si num1 < num2 entonces
+		escriba "El numero mayor es: ",num2
+		fin si
+	fin si
+fin si 
+
+fin

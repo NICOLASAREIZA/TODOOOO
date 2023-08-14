@@ -1,0 +1,24 @@
+entero cal, cal2, cal3, promedio
+
+inicio
+
+escriba "Bienvenido"
+llamar nueva_linea
+escriba "Escribe tu primer nota: "
+lea cal
+llamar nueva_linea
+escriba "Escribe tu segunda nota: "
+lea cal2
+llamar nueva_linea
+escriba "Escribe tu tercer nota: "
+lea cal3
+llamar nueva_linea
+promedio <- (cal+cal2+cal3)/3
+si promedio > 69 entonces
+Escriba "Usted APROBO su calificacion final es de: ",promedio
+sino 
+si promedio < 70 entonces
+escriba "Usted REPROBO su calificion final es de: ",promedio
+fin si 
+fin si 
+fin

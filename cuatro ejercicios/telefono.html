@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo de Software</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prototipo de Software: Comercializadora de Teléfonos Celulares</h1>
+    <form id="salesForm">
+        <!-- Etiqueta y campo de entrada para el tipo de celular -->
+        <label for="productType">Seleccione el tipo de celular:</label>
+        <select id="productType" required>
+            <option value="1">Samsung (600,000)</option>
+            <option value="2">Motorola (500,000)</option>
+            <option value="3">Huawei (550,000)</option>
+        </select><br><br>
+        
+        <!-- Etiqueta y campo de entrada para la cantidad a comprar -->
+        <label for="quantity">Cantidad a comprar:</label>
+        <input type="number" id="quantity" required><br><br>
+        
+        <!-- Etiqueta y campo de entrada para la cantidad disponible de cada marca -->
+        <label for="availableQuantity">Cantidad disponible de cada marca:</label>
+        <input type="number" id="availableQuantity" required><br><br>
+        
+        <!-- Botón para generar la factura -->
+        <button type="button" onclick="generateInvoice()">Generar Factura</button>
+    </form>
+    
+    <div id="invoice" style="display: none;">
+        <h2>Factura de Compra</h2>
+        <!-- Mostrar información de productos disponibles -->
+        <p>Cantidad de productos disponibles de cada marca:</p>
+        <p>Samsung: <span id="availableSamsung"></span></p>
+        <p>Motorola: <span id="availableMotorola"></span></p>
+        <p>Huawei: <span id="availableHuawei"></span></p>
+        
+        <!-- Mostrar información de productos vendidos -->
+        <p>Cantidad de productos vendidos de cada marca:</p>
+        <p>Samsung: <span id="soldSamsung"></span></p>
+        <p>Motorola: <span id="soldMotorola"></span></p>
+        <p>Huawei: <span id="soldHuawei"></span></p>
+        
+        <!-- Mostrar valor total de ventas -->
+        <p>Valor total de ventas de cada marca:</p>
+        <p>Samsung: $<span id="totalSalesSamsung"></span></p>
+        <p>Motorola: $<span id="totalSalesMotorola"></span></p>
+        <p>Huawei: $<span id="totalSalesHuawei"></span></p>
+        
+        <!-- Mostrar total a pagar -->
+        <p>Total a pagar: $<span id="totalToPay"></span></p>
+    </div>
+    
+    <script>
+        function generateInvoice() {
+            var productType = parseInt(document.getElementById("productType").value);
+            var quantity = parseInt(document.getElementById("quantity").value);
+            var availableQuantity = parseInt(document.getElementById("availableQuantity").value);
+            
+            if (quantity <= 0 || quantity > availableQuantity) {
+                alert("Cantidad no válida. Debe ser mayor a 0 y menor o igual a la cantidad disponible.");
+                return;
+            }
+            
+            if (isNaN(productType) || isNaN(quantity) || isNaN(availableQuantity)) {
+                alert("Error. Por favor, ingresa datos válidos.");
+                return;
+            }
+            
+            var price = 0;
+            if (productType === 1) {
+                price = 600000;
+            } else if (productType === 2) {
+                price = 500000;
+            } else if (productType === 3) {
+                price = 550000;
+            }
+            
+            var totalSales = price * quantity;
+            
+            var discountThreshold = 10;
+            if (quantity > discountThreshold) {
+                var discount = totalSales * 0.05;
+                totalSales -= discount;
+            }
+            
+            var productTypeName = "";
+            if (productType === 1) {
+                productTypeName = "Samsung";
+            } else if (productType === 2) {
+                productTypeName = "Motorola";
+            } else if (productType === 3) {
+                productTypeName = "Huawei";
+            }
+            
+            updateInvoiceData(productTypeName, quantity, totalSales);
+            updateAvailableQuantity(productTypeName, availableQuantity - quantity);
+            
+            document.getElementById("invoice").style.display = "block";
+        }
+        
+        function updateInvoiceData(productTypeName, quantity, totalSales) {
+            document.getElementById(`sold${productTypeName}`).textContent = quantity;
+            document.getElementById(`totalSales${productTypeName}`).textContent = totalSales.toFixed(2);
+            document.getElementById("totalToPay").textContent = totalSales.toFixed(2);
+        }
+        
+        function updateAvailableQuantity(productTypeName, newAvailableQuantity) {
+            document.getElementById(`available${productTypeName}`).textContent = newAvailableQuantity;
+        }
+    </script>
+</body>
+</html>
